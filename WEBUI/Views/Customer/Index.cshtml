@@ -1,0 +1,230 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@section Scripts {        
+    <script src="~/Scripts/Controller/CustomerController.js"></script>
+}
+<base href="/Customer/Index"> 
+<h2>Customer</h2>
+<div class="container">   
+    <div class="row">
+        <div>
+            <div ng-controller="CustomerController">                
+                <div style="padding-bottom:15px;padding-left:15px">
+                    <button type="button" class="btn btn-primary" ng-click="Customer.Method.ShowForm('add')">Add Customer</button>
+                    <br />
+                </div>                
+                <div>
+                <script  type="text/ng-template" id="modal.html">
+                    <div class="modal-header">
+                        <h3>Customer Infomation</h3>
+                    </div>
+                    <form name="customerForm" novalidate>
+                        <div class="modal-body">
+                            <!-- NAME -->
+                            <div>
+                               <input type="hidden" ng-model="cus.ID" />                               
+                            </div>
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" name="fname" class="form-control" ng-model="cus.FirstName" ng-required="true" required>  
+                                <div ng-messages="customerForm.fname.$error" ng-if='customerForm.fname.$dirty'> 
+                                    <div ng-message="required"  style="color:red">
+                                        First name is required.
+                                    </div>
+                                </div>                         
+                                @*<p ng-show="customerForm.fname.$error && !form.userForm.name.$pristine" style="color:red">You name is required.</p>*@
+                            </div>
+                            <div class="form-group">
+                                <label>Middle Name</label>
+                                <input type="text" name="mname" class="form-control" ng-model="cus.MiddleName" ng-required="true" required>
+                                <!--<p ng-show="form.userForm.name.$invalid && !form.userForm.name.$pristine" class="help-block">You name is required.</p>-->
+                                <div ng-messages="customerForm.mname.$error" ng-if='customerForm.mname.$dirty'>
+                                    <div ng-message="required" style="color:red">
+                                        Middle name is required.
+                                    </div>
+                                </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" name="lname" class="form-control" ng-model="cus.LastName" ng-required="true"  required> 
+                                <!--<p ng-show="form.userForm.name.$invalid && !form.userForm.name.$pristine" class="help-block">You name is required.</p>-->
+                                <div ng-messages="customerForm.lname.$error" ng-if='customerForm.lname.$dirty'>
+                                    <div ng-message="required" style="color:red">
+                                        Last name is required.
+                                    </div>
+                                </div> 
+                            </div>
+                            <div>
+                                <label>Gender</label>
+                                <label class="radio-inline"><input type="radio" value="Male"  name="gender"  required  ng-model="cus.Gender" >Male</label>
+                                <label class="radio-inline"><input type="radio" value="Female" name="gender"  required ng-model="cus.Gender">FeMale</label>
+                                <div ng-messages="customerForm.gender.$error" ng-if='customerForm.gender.$dirty'>
+                                    <div ng-message="required" style="color:red">
+                                         Gender is required.
+                                    </div>
+                                </div> 
+                            </div>
+                            <div>
+                                <label>Birth Date</label>                               
+                                <input type="text" name="dob" class="form-control"  ng-model="cus.DOB" required  ng-pattern="/^((\d{4})-(\d{2})-(\d{2}))$/" >                                                    
+                                <div ng-messages="customerForm.DOB.$error" ng-if='customerForm.DOB.$dirty'>
+                                    <div ng-message="required" style="color:red">
+                                         Birth date name is required.
+                                    </div>
+                                    <div ng-message="pattern" style="color:red">
+                                      Invalid  format. please use <b>YYYY-MM-DD </b>
+                                    </div>
+                                </div>                                                             
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" name="email" class="form-control" ng-model="cus.Email"  required >
+                                <!--<p ng-show="form.userForm.email.$invalid && !form.userForm.email.$pristine" class="help-block">Enter a valid email.</p>-->
+                                <div ng-messages="customerForm.email.$error" ng-if='customerForm.email.$dirty'>
+                                    <div ng-message="required" style="color:red">
+                                        Email id  is required.
+                                    </div>
+                                    <div ng-message="email" style="color:red">
+                                       please enter valid email id.
+                                    </div>
+                                </div> 
+                            </div>
+                            <div class="form-group">
+                                <label>Mobile Number</label>
+                                <input type="text" name="mobileno" class="form-control"  ng-model="cus.MobileNo" ng-pattern="/^[0-9]{10}$/" numbers-only   required> 
+                                <div ng-messages="customerForm.mobileno.$error" ng-if='customerForm.mobileno.$dirty'>
+                                    <div ng-message="required" style="color:red">
+                                        Mobile number is required.
+                                    </div>
+                                    <div ng-message="pattern" style="color:red">
+                                        Please valid mobile number.
+                                    </div>
+                                </div>                             
+                            </div>
+                            <div class="form-group">
+                                <label>Address</label>
+                                <input type="text" name="address" class="form-control" ng-model="cus.Address" required>
+                                <!--<p ng-show="form.userForm.name.$invalid && !form.userForm.name.$pristine" class="help-block">You name is required.</p>-->
+                                <div ng-messages="customerForm.address.$error" ng-if='customerForm.address.$dirty'>
+                                    <div ng-message="required" style="color:red">
+                                        Address is required.
+                                    </div>                                  
+                                </div>     
+                            </div>
+                            <div>
+                                <label>City</label>
+                                <select class='form-control' ng-model="cus.City" name="city" required>
+                                    <option value='Surat'>Surat</option>
+                                    <option value='Bardoli'>Bardoli</option>
+                                    <option value='Navsari'>Navsari</option>
+                                </select>
+                                <div ng-messages="customerForm.city.$error" ng-if='customerForm.city.$dirty'>
+                                    <div ng-message="required" style="color:red">
+                                       Select your city
+                                    </div>
+                                </div>     
+                            </div>
+                            <div>
+                                <label>State</label>
+                                <select class='form-control' ng-model="cus.State" name="State" required>
+                                    <option value='Gujarat'>Gujarat</option>
+                                    <option value='Rajasthan'>Rajasthan</option>
+                                    <option value='Goa'>Goa</option>
+                                </select>
+                                <div ng-messages="customerForm.State.$error" ng-if='customerForm.State.$dirty'>
+                                    <div ng-message="required" style="color:red">
+                                        Select your state
+                                    </div>
+                                </div>  
+                            </div>
+                            <div>
+                                <label>Country</label>
+                                <select class='form-control' ng-model="cus.Country" name="Country" required>
+                                    <option value='India'>India</option>
+                                    <option value='Uk'>UK</option>
+                                    <option value='Rasia'>Rasia</option>
+                                </select>
+                                <div ng-messages="customerForm.Country.$error" ng-if='customerForm.Country.$dirty'>
+                                    <div ng-message="required" style="color:red">
+                                        Select your country
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="modal-footer">                             
+                            <button type="submit" class="btn btn-primary" ng-disabled="customerForm.$pristine"  ng-click="Customer.Method.AddCustomer(cus,customerForm)">OK</button>
+                            <button class="btn btn-warning" ng-click="Customer.Method.cancel()">Cancel</button>
+                        </div>
+                            </div>
+                    </form>
+
+                </script>
+                </div>
+                <div >                    
+                    <div data-loading  class="loader"> </div>  
+                </div>
+
+                <div class="form-group col-lg-4">
+                    <div class="form-group has-feedback">
+                        <input type="text" class="form-control" id="inputValidation" placeholder="Search" ng-model="customersearch" />                        
+                    </div>
+                </div>
+
+                <div>
+                    <table  class="table">
+                        <tr>                          
+                            <th><a ng-click="Customer.Method.SortCustomer('FirstName')">FirstName </a>  <span class="sortorder" ng-show="propertyName === 'FirstName'" ng-class="{reverse: reverse}" > </span></th>
+                            <th><a ng-click="Customer.Method.SortCustomer('MiddleName')">MiddleName </a> <span class="sortorder" ng-show="propertyName === 'MiddleName'" ng-class="{reverse: reverse}" > </span> </th>
+                            <th><a ng-click="Customer.Method.SortCustomer('LastName')">LastName  </a> <span class="sortorder" ng-show="propertyName === 'LastName'" ng-class="{reverse: reverse}"> </span>    </th>
+                            <th><a ng-click="Customer.Method.SortCustomer('Gender')"> Gender </a>  <span class="sortorder" ng-show="propertyName === 'Gender'" ng-class="{reverse: reverse}"> </span>     </th>
+                            <th><a ng-click="Customer.Method.SortCustomer('DOB')"> Birth Date </a> <span class="sortorder" ng-show="propertyName === 'DOB'" ng-class="{reverse: reverse}"> </span>    </th>
+                            <th><a ng-click="Customer.Method.SortCustomer('Email')"> Email </a> <span class="sortorder" ng-show="propertyName === 'Email'" ng-class="{reverse: reverse}"> </span></th>
+                            <th><a ng-click="Customer.Method.SortCustomer('Address')"> Address </a><span class="sortorder" ng-show="propertyName === 'Address'" ng-class="{reverse: reverse}"> </span> </th>
+                            <th><a ng-click="Customer.Method.SortCustomer('City')"> City  </a><span class="sortorder" ng-show="propertyName === 'City'" ng-class="{reverse: reverse}"> </span></th>
+                            <th><a ng-click="Customer.Method.SortCustomer('State')"> State </a><span class="sortorder" ng-show="propertyName === 'State'" ng-class="{reverse: reverse}"> </span> </th>
+                            <th><a ng-click="Customer.Method.SortCustomer('Country')"> Country </a> <span class="sortorder" ng-show="propertyName === 'Country'" ng-class="{reverse: reverse}"> </span></th>
+                            <td></td>
+                            <td></td>
+                        </tr>                     
+                        <tr ng-cloak  ng-repeat="cusdata in customerdata.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | orderBy:propertyName:reverse | filter:customersearch">                          
+                            <td>{{ cusdata.FirstName | uppercase}}</td>
+                            <td>{{ cusdata.MiddleName}}</td>
+                            <td>{{ cusdata.LastName }}</td>
+                            <td>{{ cusdata.Gender }} </td>
+                            <td>{{ cusdata.DOB  | date : 'yyyy-MM-dd'}}</td>
+                            <td>{{ cusdata.Email }}</td>
+                            <td>{{ cusdata.Address}} </td>
+                            <td>{{ cusdata.City}}</td>
+                            <td>{{ cusdata.State}} </td>
+                            <td>{{ cusdata.Country}}</td>
+                            <td>
+                                <input type="button" value="Remove" class="btn btn-primary" ng-click="Customer.Method.DeletePopup(cusdata.ID,$index)" />                                         
+                            </td>
+                            <td>
+                                <input type="button" value="Edit" class="btn btn-primary" ng-click="Customer.Method.editCustomer(cusdata,$index)"  />
+                            </td>
+                        </tr>
+
+                    </table>
+                    <pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></pagination>
+                </div>                                             
+                <script type="text/ng-template" id="modaldelete.html">
+                 
+                            <div class="modal-header">
+                                Confirm
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete customer details ?
+                            </div>
+                            <div class="modal-footer">                               
+                                <button type="submit" class="btn btn-success success" ng-click="Customer.Method.DeleteCustomer()">Yes</button>
+                                <button type="submit" class="btn btn-default"  ng-click="Customer.Method.cancel()">No</button>
+                            </div>                     
+                </script>
+                                                                                                               
+                <toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>         
+            </div>           
+        </div>        
+    </div>
+</div>
+

@@ -1,0 +1,1 @@
+﻿var Myapp = angular.module("mymodule", ['ui.bootstrap', 'ngMessages', 'toaster', 'ngAnimate']);

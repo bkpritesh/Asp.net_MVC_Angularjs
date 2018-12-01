@@ -1,0 +1,10 @@
+F:\Pritesh\Project\AngularJsDemo\DAL\bin\Debug\DAL.dll.config
+F:\Pritesh\Project\AngularJsDemo\DAL\bin\Debug\DAL.dll
+F:\Pritesh\Project\AngularJsDemo\DAL\bin\Debug\DAL.pdb
+F:\Pritesh\Project\AngularJsDemo\DAL\bin\Debug\EntityFramework.dll
+F:\Pritesh\Project\AngularJsDemo\DAL\bin\Debug\EntityFramework.SqlServer.dll
+F:\Pritesh\Project\AngularJsDemo\DAL\bin\Debug\EntityFramework.xml
+F:\Pritesh\Project\AngularJsDemo\DAL\bin\Debug\EntityFramework.SqlServer.xml
+F:\Pritesh\Project\AngularJsDemo\DAL\obj\Debug\DAL.dll
+F:\Pritesh\Project\AngularJsDemo\DAL\obj\Debug\DAL.pdb
+F:\Pritesh\Project\AngularJsDemo\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache

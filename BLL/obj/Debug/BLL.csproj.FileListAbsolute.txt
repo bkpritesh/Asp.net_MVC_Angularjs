@@ -1,0 +1,9 @@
+F:\Pritesh\Project\AngularJsDemo\BLL\bin\Debug\BLL.dll
+F:\Pritesh\Project\AngularJsDemo\BLL\bin\Debug\BLL.pdb
+F:\Pritesh\Project\AngularJsDemo\BLL\bin\Debug\DAL.dll
+F:\Pritesh\Project\AngularJsDemo\BLL\bin\Debug\EntityFramework.dll
+F:\Pritesh\Project\AngularJsDemo\BLL\bin\Debug\DAL.pdb
+F:\Pritesh\Project\AngularJsDemo\BLL\bin\Debug\EntityFramework.xml
+F:\Pritesh\Project\AngularJsDemo\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+F:\Pritesh\Project\AngularJsDemo\BLL\obj\Debug\BLL.dll
+F:\Pritesh\Project\AngularJsDemo\BLL\obj\Debug\BLL.pdb

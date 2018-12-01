@@ -1,0 +1,18 @@
+﻿body {
+}
+.sortorder:after {
+      content: '\25b2'; 
+}
+.sortorder.reverse:after {
+      content: '\25bc';   
+}
+a:hover {
+  cursor: pointer;
+  text-decoration: none;
+}   
+.loader
+{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+}
